@@ -1,0 +1,33 @@
+.MemoList input[placeholder="메모 검색"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px; /* 둥근 검색바 */
+  padding-left: 15px;
+}
+
+.MemoList h2 {
+  font-size: 1.1rem;
+  margin: 20px 0 10px;
+  color: #333;
+}
+
+.list-contoroller {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.list-contoroller button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.list-contoroller button:hover {
+  background-color: #f0f0f0;
+}

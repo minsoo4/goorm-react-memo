@@ -1,0 +1,77 @@
+.MemoItem {
+  display: flex;
+  /* align-items: center; 대신 flex-start를 사용해서 내용이 길어져도 위쪽 기준 정렬 */
+  align-items: flex-start; 
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
+}
+
+.MemoItem:hover {
+  background-color: #fafafa;
+}
+
+.MemoItem input[type="checkbox"] {
+  /* 체크박스가 너무 위에 붙지 않도록 약간의 마진 추가 */
+  margin-top: 4px; 
+  margin-right: 15px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  /* 체크박스 크기가 줄어들지 않게 고정 */
+  flex-shrink: 0; 
+}
+
+/* 텍스트 덩어리 영역 */
+.info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-grow: 1;
+  /* 텍스트 영역이 너무 넓어져서 버튼을 밀어내지 않도록 최소 너비 설정 */
+  min-width: 0; 
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.content {
+  font-size: 0.95rem;
+  color: #666;
+  word-break: break-all;
+  margin-bottom: 4px; /* 날짜와 약간의 간격 */
+}
+
+/* 날짜 영역 전체를 감싸는 컨테이너 (작성일, 수정일이 나란히 보이게 하고 싶다면) */
+.createdAt {
+  font-size: 0.8rem;
+  color: #aaa;
+  display: flex;
+  flex-direction: column; /* 세로로 유지하되 간격 조정 */
+  gap: 2px;
+}
+
+/* 버튼 세트 영역 */
+.button-set {
+  display: flex;
+  gap: 8px;
+  margin-left: 15px;
+  /* 버튼 뭉치가 내용이 길어져도 위쪽에 고정되도록 설정 */
+  align-self: flex-start; 
+  margin-top: 2px;
+  flex-shrink: 0; /* 버튼 영역이 좁아져서 찌그러지는 것 방지 */
+}
+
+.button-set button {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  white-space: nowrap;
+}
+/* ... 이하 동일 ... */

@@ -1,0 +1,70 @@
+.MemoSearch {
+  background-color: #ffffff;
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  display: flex;  
+  flex-direction: column; /* 검색창과 필터바를 세로로 먼저 나눔 */
+  gap: 12px;
+}
+
+/* 검색창 스타일 */
+.search-bar{
+  display : flex;
+}
+.search-bar input {
+  width: 80%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.search-bar input:focus {
+  border-color: #4A90E2;
+}
+
+.search-bar button{
+  width: 20%;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: #4A90E2;
+}
+
+/* 필터 아이템들을 가로로 정렬하는 컨테이너 */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap; /* 화면이 좁아지면 아래로 떨어지게 함 */
+  gap: 20px;       /* 필터 사이 간격 */
+  align-items: center;
+}
+
+/* 개별 필터 세트 (텍스트 + 셀렉트) */
+.filter-item {
+  display: flex;
+  align-items: center; /* 라벨과 셀렉트박스를 수직 중앙 정렬 */
+  gap: 8px;            /* 라벨과 셀렉트박스 사이 간격 */
+}
+
+.filter-item p {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #666;
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+  margin: 0;
+}
+
+.filter-item select {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.filter-item select:hover {
+  border-color: #bbb;
+}
