@@ -3,8 +3,8 @@ import {useState, useRef, useEffect} from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 function MemoForm({addMemo, updateMemo, memos}){
-  const { id } = useParams(); // 2. URL에서 id를 가져옵니다.
-  const navigate = useNavigate();
+  const { id } = useParams(); // url의 id 값
+  const navigate = useNavigate(); //페이지 코드
   
   const editingMemo = Boolean(id);
   const targetMemo = memos?.find(m => String(m.id) === String(id));
@@ -44,7 +44,7 @@ function MemoForm({addMemo, updateMemo, memos}){
       navigate(`/memos/${id}`); 
     } else {
       addMemo(title, content);
-      navigate("/"); 
+      navigate("/"); //메인페이지로 이동 
     }
 
     setTitle("");
@@ -52,7 +52,7 @@ function MemoForm({addMemo, updateMemo, memos}){
   };
 
     const onCancel = () => {
-      navigate(-1); // 이전 페이지로 돌아가기
+      navigate(-1); // 이전 페이지로 이동
     };
   
 

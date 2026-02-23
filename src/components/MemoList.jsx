@@ -5,7 +5,7 @@ import MemoSearch from './MemoSearch'
 
 function MemoList({ memos, setSearch, updateMemo, deleteMemo, isLoading, fixMemo}) {
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); //페이지 코드
 
   const latestMemos = [...memos].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   

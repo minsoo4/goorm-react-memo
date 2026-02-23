@@ -7,11 +7,10 @@ function MemoItem({memo, deleteMemo, fixMemo}){
   const navigate = useNavigate();
 
   const onClickEdit = () => {
-    navigate(`/memos/${id}/edit`); // ✅ 선언된 변수를 사용만 하세요.
+    navigate(`/memos/${id}/edit`);
   };
   
 
-// 삭제 버튼 클릭 함수
   const onClickDelete=()=>{
     if (window.confirm("이 메모를 삭제할까요.")){
       deleteMemo(id);

@@ -45,15 +45,15 @@ const memoReducer = (state, action) => {
 
 function App(){
   const [theme, setTheme] = useState('light');
-  const [memos, dispatch] = useReducer(memoReducer, []); // 2. 여기서 관리!
+  const [memos, dispatch] = useReducer(memoReducer, []);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMemos = async () => {
       setIsLoading(true);
       try {
-        // API 호출 시 검색어를 파라미터로 전달 ({ q: searchQuery })
         const data = await memoApi.getAllMemos({ q: searchQuery });
         dispatch({ type: 'SET_MEMOS', payload: data.items || data });
       } catch (e) {
@@ -65,13 +65,12 @@ function App(){
     fetchMemos();
   }, [searchQuery]);
 
-      const [error, setError] = useState(null);     // 입력 중인 값
       
           //메모 생성
         const handleCreate = async (title, content) => {
           try {
             const newMemo = await memoApi.createMemo({ title, content });
-            dispatch({ type: 'ADD_MEMO', payload: newMemo });  // 앞에 추가
+            dispatch({ type: 'ADD_MEMO', payload: newMemo }); 
           } catch (err) {
             setError('추가에 실패했습니다');
             console.error(err)
@@ -122,6 +121,7 @@ function App(){
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className={`App ${theme}`}>
         <Routes>
+
           <Route element={<Layout />}>
             <Route path="/" element={<Home 
               memos={memos} 
@@ -134,20 +134,24 @@ function App(){
               deleteMemo={handelDelete}
               fixMemo={handleFix}
             />} />
+
             <Route path="/memos/new" element={<MemoForm
               memos={memos}  
               addMemo={handleCreate}
               updateMemo={handleUpdate}
               editingMemo={handelDelete}
             />} />
+
             <Route path="/memos/:id" element={<Detail  
               memos={memos}
               deleteMemo={handelDelete}
               />} />
+
             <Route path="/memos/:id/edit" element={<MemoForm
               updateMemo={handleUpdate}
               memos={memos}
             />} />
+            
             <Route path="*" element={<NotFounde />} />
           </Route>
         </Routes>
