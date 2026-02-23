@@ -1,16 +1,11 @@
 import './style/MemoList.css'
-import { useState } from 'react'
-import MemoForm from './MemoForm'
+import { useNavigate } from 'react-router-dom'
 import MemoItem from './MemoItem'
 import MemoSearch from './MemoSearch'
 
-function MemoList({ memos, setSearch, addMemo, updateMemo, deleteMemo, isLoading, fixMemo}) {
+function MemoList({ memos, setSearch, updateMemo, deleteMemo, isLoading, fixMemo}) {
 
-  const [editingMemo, setEditingMemo] = useState(null);
-
-  const clickEditing = (memo) =>{
-    setEditingMemo(memo);
-  };
+  const navigate = useNavigate();
 
   const latestMemos = [...memos].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   
@@ -25,16 +20,13 @@ function MemoList({ memos, setSearch, addMemo, updateMemo, deleteMemo, isLoading
       <MemoSearch
         setSearch={setSearch}
       />
-
-      <MemoForm 
-        addMemo={addMemo}
-        updateMemo={updateMemo}
-        editingMemo={editingMemo}
-        setEditingMemo={setEditingMemo}
-      />
-
-      <h2>메모 목록 ({memos.length}개)</h2>
-
+    
+      <div className="list-header">
+        <h2>메모 목록 ({memos.length}개)</h2>
+        <button onClick={() => navigate("/memos/new")}>
+          메모 추가하기
+        </button>
+      </div>
 
       {memos.length === 0 && !isLoading 
       ? <p>작성된 메모가 없습니다.</p> 
@@ -45,7 +37,6 @@ function MemoList({ memos, setSearch, addMemo, updateMemo, deleteMemo, isLoading
             updateMemo={updateMemo}
             deleteMemo={deleteMemo}
             fixMemo={fixMemo}
-            onEdit={()=> clickEditing(memo)}
           />
         ))
       )}

@@ -1,70 +1,83 @@
+/* MemoSearch.css */
+
 .MemoSearch {
-  background-color: #ffffff;
-  padding: 16px;
-  border-bottom: 1px solid #eee;
-  display: flex;  
-  flex-direction: column; /* 검색창과 필터바를 세로로 먼저 나눔 */
-  gap: 12px;
+  background-color: var(--bg-box);
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 검색창과 필터 사이 간격 */
+  border-radius: 12px 12px 0 0; /* 위쪽만 둥글게 */
 }
 
-/* 검색창 스타일 */
-.search-bar{
-  display : flex;
+/* 검색창 레이아웃 - 여기가 핵심! */
+.search-bar {
+  display: flex;
+  width: 100%; /* 부모 너비 꽉 채움 */
+  gap: 10px;   /* input과 button 사이 간격 */
+  align-items: stretch; /* 높이 맞춤 */
 }
+
 .search-bar input {
-  width: 80%;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
+  flex: 1; /* 남은 공간을 모두 차지 (width 80% 대신 사용) */
+  min-width: 0; /* flex 환경에서 input이 부모를 뚫고 나가는 현상 방지 */
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
+  background-color: var(--bg-input);
+  color: var(--text-main);
+  font-size: 1rem;
   outline: none;
-  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  box-sizing: border-box; /* 패딩이 너비에 포함되게 함 */
 }
 
 .search-bar input:focus {
-  border-color: #4A90E2;
+  border-color: var(--point-color);
 }
 
-.search-bar button{
-  width: 20%;
-  padding: 5px 10px;
+.search-bar button {
+  padding: 0 20px; /* 좌우 패딩만 주어 글자 크기에 맞춤 */
+  background-color: var(--point-color);
+  color: white;
+  border: none;
   border-radius: 8px;
-  font-size: 0.95rem;
-  background-color: #4A90E2;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap; /* 버튼 글자가 두 줄로 변하는 것 방지 */
+  transition: background 0.2s;
 }
 
-/* 필터 아이템들을 가로로 정렬하는 컨테이너 */
+.search-bar button:hover {
+  background-color: var(--point-hover);
+}
+
+/* 필터 영역 */
 .filter-container {
   display: flex;
-  flex-wrap: wrap; /* 화면이 좁아지면 아래로 떨어지게 함 */
-  gap: 20px;       /* 필터 사이 간격 */
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-/* 개별 필터 세트 (텍스트 + 셀렉트) */
 .filter-item {
   display: flex;
-  align-items: center; /* 라벨과 셀렉트박스를 수직 중앙 정렬 */
-  gap: 8px;            /* 라벨과 셀렉트박스 사이 간격 */
+  align-items: center;
+  gap: 8px;
 }
 
 .filter-item p {
   font-size: 0.85rem;
-  font-weight: 700;
-  color: #666;
-  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+  font-weight: bold;
+  color: var(--text-sub);
   margin: 0;
 }
 
 .filter-item select {
-  padding: 6px 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #fff;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--bg-input);
+  color: var(--text-main);
   cursor: pointer;
-  font-size: 0.85rem;
-  color: #333;
-}
-
-.filter-item select:hover {
-  border-color: #bbb;
+  outline: none;
 }

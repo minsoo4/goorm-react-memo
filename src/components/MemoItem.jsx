@@ -1,8 +1,15 @@
 import './style/MemoItem.css'
+import { Link, useNavigate } from "react-router-dom";
 
-function MemoItem({memo, deleteMemo, onEdit, fixMemo}){
+function MemoItem({memo, deleteMemo, fixMemo}){
   const { id, title, content, isPinned, createdAt, updatedAt} = memo;
 
+  const navigate = useNavigate();
+
+  const onClickEdit = () => {
+    navigate(`/memos/${id}/edit`); // ✅ 선언된 변수를 사용만 하세요.
+  };
+  
 
 // 삭제 버튼 클릭 함수
   const onClickDelete=()=>{
@@ -22,7 +29,10 @@ function MemoItem({memo, deleteMemo, onEdit, fixMemo}){
       />
       
       <div className="info-box">
-        <div className="title">{title}</div>
+        <Link to={`/memos/${id}`} className="title-link">
+          <div className="title">{title}</div>
+        </Link>
+
         <div className="content">{content}</div>
 
         <div className="createdAt">
@@ -46,7 +56,7 @@ function MemoItem({memo, deleteMemo, onEdit, fixMemo}){
         >
           📌
         </button>
-        <button onClick={onEdit}>수정</button>
+        <button onClick={onClickEdit}>수정</button>
         <button onClick={onClickDelete}>삭제</button>
       </div>
 

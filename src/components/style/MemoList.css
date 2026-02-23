@@ -1,33 +1,92 @@
+/* MemoList.css */
+
+/* 검색창 (MemoSearch와 별도로 MemoList 내부에 검색창이 있는 경우) */
 .MemoList input[placeholder="메모 검색"] {
   width: 100%;
-  padding: 10px;
+  padding: 12px 15px;
   margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 20px; /* 둥근 검색바 */
-  padding-left: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  background-color: var(--bg-input);
+  color: var(--text-main);
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.MemoList input[placeholder="메모 검색"]:focus {
+  border-color: var(--point-color);
 }
 
 .MemoList h2 {
   font-size: 1.1rem;
   margin: 20px 0 10px;
-  color: #333;
+  color: var(--text-main);
+  font-weight: bold;
 }
 
+/* 페이지네이션 컨트롤러 */
 .list-contoroller {
   display: flex;
   justify-content: center;
-  gap: 5px;
-  margin-top: 20px;
+  gap: 8px;
+  margin-top: 30px;
+  padding-bottom: 10px;
 }
 
 .list-contoroller button {
-  padding: 5px 10px;
-  border: 1px solid #ddd;
-  background: white;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-box);
+  color: var(--text-main);
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
 }
 
+/* 마우스 호버 시 */
 .list-contoroller button:hover {
-  background-color: #f0f0f0;
+  background-color: var(--bg-app);
+  border-color: var(--text-sub);
+}
+
+/* 현재 활성화된 페이지 버튼 스타일 (필요 시 추가) */
+.list-contoroller button.active {
+  background-color: var(--point-color);
+  color: white;
+  border-color: var(--point-color);
+}
+
+/* 버튼 비활성화 상태 (첫 페이지나 마지막 페이지일 때) */
+.list-contoroller button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 제목과 버튼을 감싸는 컨테이너 */
+.list-header {
+  display: flex;
+  justify-content: space-between; /* 양 끝으로 정렬 */
+  align-items: center;           /* 세로 중앙 정렬 */
+  margin-bottom: 20px;           /* 아래 목록과의 간격 */
+}
+
+.list-header h2 {
+  margin: 0;                     /* 기본 여백 제거 */
+}
+
+/* 추가하기 버튼 스타일 (선택사항) */
+.add-btn {
+  padding: 8px 16px;
+  background-color: #4caf50;    /* 초록색 계열 */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-btn:hover {
+  background-color: #45a049;    /* 마우스 올렸을 때 살짝 어둡게 */
 }
