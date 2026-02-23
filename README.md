@@ -13,7 +13,7 @@ npm install react-router-dom
 npm run dev
 ```
 
-- 로컬 서버 접속: [http://localhost:3000/](http://localhost:5173/)
+- 로컬 서버 접속: [http://localhost:5173/](http://localhost:5173/)
    
    1. **API 파일 구조**
       
