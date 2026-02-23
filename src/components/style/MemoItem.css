@@ -1,77 +1,89 @@
+/* MemoItem.css */
+
 .MemoItem {
   display: flex;
-  /* align-items: center; 대신 flex-start를 사용해서 내용이 길어져도 위쪽 기준 정렬 */
   align-items: flex-start; 
-  padding: 15px;
-  border-bottom: 1px solid #eee;
-  transition: background 0.2s;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color); /* 변수 사용 */
+  transition: background-color 0.2s;
+  background-color: var(--bg-box); /* 변수 사용 */
 }
 
 .MemoItem:hover {
-  background-color: #fafafa;
+  /* 호버 시 배경을 살짝 다르게 */
+  background-color: rgba(128, 128, 128, 0.05);
 }
 
 .MemoItem input[type="checkbox"] {
-  /* 체크박스가 너무 위에 붙지 않도록 약간의 마진 추가 */
-  margin-top: 4px; 
+  margin-top: 5px; 
   margin-right: 15px;
   width: 18px;
   height: 18px;
   cursor: pointer;
-  /* 체크박스 크기가 줄어들지 않게 고정 */
   flex-shrink: 0; 
+  /* 다크모드에서 체크박스 테두리가 너무 밝으면 아래 속성 활용 */
+  accent-color: var(--point-color); 
 }
 
-/* 텍스트 덩어리 영역 */
+/* 텍스트 영역 */
 .info-box {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   flex-grow: 1;
-  /* 텍스트 영역이 너무 넓어져서 버튼을 밀어내지 않도록 최소 너비 설정 */
   min-width: 0; 
 }
 
 .title {
   font-size: 1.1rem;
   font-weight: bold;
-  color: #333;
+  color: var(--text-main); /* 변수 사용 */
 }
 
 .content {
   font-size: 0.95rem;
-  color: #666;
+  color: var(--text-sub); /* 변수 사용 */
   word-break: break-all;
-  margin-bottom: 4px; /* 날짜와 약간의 간격 */
+  line-height: 1.4;
 }
 
-/* 날짜 영역 전체를 감싸는 컨테이너 (작성일, 수정일이 나란히 보이게 하고 싶다면) */
 .createdAt {
-  font-size: 0.8rem;
-  color: #aaa;
+  font-size: 0.75rem;
+  color: #888; /* 날짜는 테마 상관없이 중간 톤 유지 추천 */
   display: flex;
-  flex-direction: column; /* 세로로 유지하되 간격 조정 */
+  flex-direction: column;
   gap: 2px;
+  margin-top: 4px;
 }
 
-/* 버튼 세트 영역 */
+/* 버튼 세트 */
 .button-set {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   margin-left: 15px;
-  /* 버튼 뭉치가 내용이 길어져도 위쪽에 고정되도록 설정 */
   align-self: flex-start; 
-  margin-top: 2px;
-  flex-shrink: 0; /* 버튼 영역이 좁아져서 찌그러지는 것 방지 */
+  flex-shrink: 0;
 }
 
 .button-set button {
-  padding: 6px 10px;
+  padding: 5px 10px;
   font-size: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
+  border: 1px solid var(--border-color); /* 변수 사용 */
+  border-radius: 6px;
+  background-color: var(--bg-input); /* 변수 사용 */
+  color: var(--text-main); /* 변수 사용 */
   cursor: pointer;
   white-space: nowrap;
+  transition: all 0.2s;
 }
-/* ... 이하 동일 ... */
+
+.button-set button:hover {
+  background-color: var(--border-color);
+  border-color: var(--text-sub);
+}
+
+/* 핀(고정) 버튼 등에 포인트 컬러 주고 싶을 때 */
+.button-set button.active {
+  color: var(--point-color);
+  border-color: var(--point-color);
+}
